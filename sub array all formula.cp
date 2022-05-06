@@ -60,30 +60,63 @@ void DisplayPair(int A[],int n)                    //this will show the all the 
 
 
 
-int maximumSum(int A[],int n)
+/********************************************************************************************************************************************************/
+//
+//  main.cpp
+//  code cesf
+//
+//  Created by KAIBALYA SAHOO on 20/03/2021.
+//
+
+#include <iostream>
+
+using namespace std;
+
+
+void Max_Subarray(int A[],int n)
 {
-    int sum=0,sum1=0;
+    int sum=0,B[(n*(n+1))/2],m=0,max=0;
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<n;j++)
         {
-            sum1=A[i]+A[j];
-            if(sum<sum1)
+            for(int k=i;k<=j;k++)
             {
-                sum=sum1;
+               
+             sum=sum+A[k];//to store the sum of a sub_array
             }
-           
-            
-            
+          B[m++]=sum;
+          sum=0;
+ 
         }
-
     }
     
+    for(int l=0;l<m;l++)
+    {
+     if(B[l]>max)
+    max= B[l];
+    }
+    cout<<max;
+}
+int main()
+{
+    int numb;
+    cout<<"enter the number of elements in array"<<endl;
+    cin>>numb;
+    int A[numb];
     
-    return sum1;
+    for(int i=0;i<numb;i++)
+    {
+        cin>>A[i];
+    }
+    
+    Max_Subarray(A,numb);
     
     
 }
+
+
+/********************************************************************************************************************************************************/
 
 void dispalySubarray(int a[],int n)
 {
